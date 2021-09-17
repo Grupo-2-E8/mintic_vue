@@ -5,6 +5,8 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 
+import './libs'
+
 import 'primevue/resources/themes/saga-blue/theme.css'
 import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
