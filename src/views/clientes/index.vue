@@ -21,6 +21,10 @@
       <div class="card my-3">
         <div class="card-body">
           <h1>Mis clientes</h1>
+          <router-link :to="{name:'clientes.form'}" class="btn btn-primary">
+            Crear cliente
+          </router-link>
+          
         </div>
       </div>
     </div>
