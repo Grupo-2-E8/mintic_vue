@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .fondo{background: blue;}
+        .borde{border: 1px #000 solid}
+    </style>
+    <title>mintic_vue</title>
+  </head>
+  <body>
+    <h1>mintic_vue</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="logominini.jpg" class="rounded" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">CONTACTO</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                SERVICIOS
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Servicio 1</a></li>
+                <li><a class="dropdown-item" href="#">Servicio 2</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Cancelar Servicio</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">.</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    
+   
+      <div class="table-responsive-sm-primary">
+        <table class="table borde ">
+          <caption>información de pie de pagina</caption>
+          <thead>
+            <tr>
+              <th class="table-primary" scope="col">NUMERO DEL PEDIDO</th>
+              <th class="table-primary" scope="col">FECHA DEL PEDIDO</th>
+              <th class="table-primary" scope="col">ESTADO</th>
+              <th class="table-primary" scope="col">NOMBRE CLIENTE</th>
+              <th class="table-primary" scope="col">CORREO CONTACTO</th>
+              <th class="table-primary" scope="col">CELULAR DE CONTACTO</th>
+              <th class="table-primary" scope="col">COSTO DEL PEDIDO</th>
+              <th class="table-primary" scope="col">TRANSPORTADORA</th>
+              <th class="table-primary" scope="col">ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">#</th>
+              <td>DD/MM/AAAA</td>
+              <td>En Camino</td>
+              <td>Usuario</td>
+              <td>usuario@mail.com</td>
+              <th>3**45*67**</th>
+              <td>$$$</td>
+              <td>Servientrega</td>
+              <td><div class="dropdown" >
+                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  ACCIONES
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">TIMELINE</a></li>
+                  <li><a class="dropdown-item" href="#">DETALLES</a></li>
+                  <li><a class="dropdown-item" href="#">CAMBIAR ESTADO</a></li>
+                </ul>
+              </div></td>
+              </tr>
+            <tr>
+            <th scope="row">#</th>
+            <td>DD/MM/AAAA</td>
+            <td>En Camino</td>
+            <td>Usuario</td>
+            <td>usuario@mail.com</td>
+            <th>3**45*67**</th>
+            <td>$$$</td>
+            <td>Servientrega</td>
+            <td><div class="dropdown" >
+                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                ACCIONES
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">TIMELINE</a></li>
+                <li><a class="dropdown-item" href="#">DETALLES</a></li>
+                <li><a class="dropdown-item" href="#">CAMBIAR ESTADO</a></li>
+                </ul>
+            </div></td>
+            </tr>
+            <tr>
+                <th scope="row">#</th>
+                <td>DD/MM/AAAA</td>
+                <td>En Camino</td>
+                <td>Usuario</td>
+                <td>usuario@mail.com</td>
+                <th>3**45*67**</th>
+                <td>$$$</td>
+                <td>Servientrega</td>
+                <td><div class="dropdown" >
+                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    ACCIONES
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">TIMELINE</a></li>
+                    <li><a class="dropdown-item" href="#">DETALLES</a></li>
+                    <li><a class="dropdown-item" href="#">CAMBIAR ESTADO</a></li>
+                </ul>
+                </div></td>
+                </tr>
+          </tbody>
+        </table>
+      </div>
+      
+     
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="js/bootstrap.min.js" >
+  </body>
+</html>
