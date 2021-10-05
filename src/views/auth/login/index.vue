@@ -55,7 +55,7 @@
 
 <script>
 import { useField, useForm} from 'vee-validate'
-import {} from 'vue'
+import {useRouter} from 'vue-router'
 import {useLogin} from './useLogin'
 import {string,object} from 'yup'
 import {loginService} from '../service'
@@ -63,6 +63,7 @@ export default {
   name: 'LoginPage',
   setup(){
     useLogin()
+    const router = useRouter()
     const validationSchema = object({
       'correo': string().max(255).required(),
       'clave': string().min(6)
@@ -87,6 +88,7 @@ export default {
     
     const handleLogin = handleSubmit((values)=>{
       console.log({values})
+      router.push({name: 'Home'})
       loginService(values).then(()=>{
         console.log(result)
       }).catch(err=>{
