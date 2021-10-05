@@ -1,15 +1,5 @@
 <template>
-  <section>
-    <Sidebar v-model:visible="visibleLeft">
-      <div class="d-flex w-100 flex-column">
-        <router-link :to="{name: 'clientes'}" class="w-100 mb-2">
-          Clientes
-        </router-link>
-        <router-link :to="{name: 'pedidos'}" class="w-100 mb-2">
-          Pedidos
-        </router-link>
-      </div>
-    </Sidebar>
+  <Page>
     <button 
     type="button" 
     class="btn btn-primary mt-2"
@@ -56,20 +46,19 @@
         </Column>
       </DataTable>
     </div>
-  </section>
+  </Page>
 </template>
 
 <script>
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
 import {computed, ref} from 'vue'
-import Sidebar from 'primevue/sidebar';
-
+import Page from '../../components/Page.vue'
 export default {
   components:{
     DataTable,
     Column,
-    Sidebar
+    Page
   },
   setup(){
     const visibleLeft = ref(false)
