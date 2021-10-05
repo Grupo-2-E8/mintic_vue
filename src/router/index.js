@@ -29,7 +29,12 @@ const routes = [
     path: '/pedidos',
     name: 'pedidos',
     component: ()=>import('../views/pedidos')
-  }
+  },
+  {
+    path: '/login',
+    name: 'auth.login',
+    component: ()=>import('../views/auth/login')
+  },
 ]
 
 const router = createRouter({
