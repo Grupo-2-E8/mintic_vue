@@ -31,6 +31,11 @@ const routes = [
     component: ()=>import('../views/pedidos')
   },
   {
+    path: '/pedidos/form/:id?',
+    name: 'pedidos.form',
+    component: ()=>import('../views/pedidos/form')
+  },
+  {
     path: '/login',
     name: 'auth.login',
     component: ()=>import('../views/auth/login')

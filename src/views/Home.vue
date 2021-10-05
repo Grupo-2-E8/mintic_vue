@@ -1,15 +1,7 @@
 <template>
   <Page>
-    <div class="home">
-      <!-- <SideBar /> -->
-      <router-link :to="{name: 'clientes'}" class="">
-        Ir a clientes
-      </router-link>
-      <br>
-      
-      <router-link :to="{name: 'pedidos'}">
-        Ir a pedidos
-      </router-link>
+    <div class="Container">
+      <h1>Bienvenido</h1>      
     </div>
   </Page>
 </template>

@@ -1,5 +1,13 @@
 <template>
   <Page>
+    <div class="d-flex p-3">
+      <router-link
+      :to="{name: 'pedidos.form'}"
+      class="btn btn-primary"
+      >
+        Crear nuevo pedido
+      </router-link>
+    </div>
     <div class="">
       <DataTable :value="info">
         <Column header="ID" field="id" />

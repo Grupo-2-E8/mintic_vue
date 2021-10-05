@@ -15,17 +15,17 @@ export default {
       {
         label: "Pedidos",
         icon: "pi pi-fw pi-pencil",
-        to: 'pedidos'
+        to:{ name: 'pedidos'}
       },
       {
         label: "Clientes",
         icon: "pi pi-fw pi-user",
-        to: 'clientes'
+        to:{ name: 'clientes'}
       },
       {
         label: "Cerrar sesion",
         icon: "pi pi-fw pi-power-off",
-        to: 'login'
+        to:{ name: 'auth.login'}
       },
     ]);
     return {
