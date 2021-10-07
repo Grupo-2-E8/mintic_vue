@@ -46,6 +46,9 @@
             >
               Ingresar
             </button>
+            <router-link to="/" class="btn btn-primary">
+              Registrarme
+            </router-link>
           </div>
         </form>
       </div>
