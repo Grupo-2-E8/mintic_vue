@@ -40,6 +40,11 @@ const routes = [
     name: 'auth.login',
     component: ()=>import('../views/auth/login')
   },
+  {
+    path: '/registrarme',
+    name: 'auth.registrarme',
+    component: ()=>import('../views/auth/registrarme')
+  },
 ]
 
 const router = createRouter({

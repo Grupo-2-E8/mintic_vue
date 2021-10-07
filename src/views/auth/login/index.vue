@@ -6,7 +6,7 @@
       <div class="card-body">
         <form @submit="handleLogin">          
           <div class="w-100 my-2 mb-3">
-            <h2>Inicio de Sesion</h2>
+            <h1><b>Inicio de Sesion</b></h1>
           </div>
           <div class="w-100 mb-3 ">
             <label 
@@ -42,11 +42,14 @@
           <div class="w-100 mb-2 ">
             <button 
             type="submit" 
-            class="btn btn-primary w-100"
+            class="btn btn-primary w-100 mb-4"
             >
               Ingresar
             </button>
-            <router-link to="/" class="btn btn-primary">
+            <router-link 
+            :to="{name: 'auth.registrarme'}" 
+            class="btn btn-primary w-100"
+            >
               Registrarme
             </router-link>
           </div>

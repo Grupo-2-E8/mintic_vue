@@ -5,7 +5,14 @@ const loginService = ({correo,clave}) => http.post('/auth/login',{
   clave
 })
 
+const registerService = ({correo,clave}) => http.post('/usuarios',{
+  correo,
+  clave
+})
+
+
 
 export {
-  loginService
+  loginService,
+  registerService
 }
