@@ -5,6 +5,18 @@
       class="needs-validation col-12 col-sm-4" 
       @submit="handleSave"
       >
+        <div class="col-12 text-start mb-3">
+          <button 
+          class="btn btn-primary m-1 d-flex align-items-center" 
+          type="button"
+          @click="$router.back()"
+          >
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+            </svg>
+            Volver
+          </button>
+        </div>
           <div class="col-md-12 mb-3">
             <h1><b>Formulario crear cliente</b></h1>
           </div>
@@ -117,12 +129,13 @@
             Guardar
           </button>
           <button 
-          class="btn btn-warning m-1" 
+          class="btn btn-outline-warning m-1" 
           type="reset"
           @click="handleReset "
           >
             Limpiar
           </button>
+          
         </div>
         
       </form>
