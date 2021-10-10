@@ -20,7 +20,23 @@
           <div class="col-md-12 mb-3">
             <h1><b>Formulario crear cliente</b></h1>
           </div>
-
+          <div class="col-md-12 mb-3">
+            <label 
+            for="validarIdentificacion"
+            class="w-100 text-start"
+            >
+              Identificacion:
+            </label>
+            <input
+            v-model="model.identificacion"
+            type="text"
+            class="form-control"
+            id="validarIdentificacion"
+            />
+            <div class="text-danger w-100 text-start">
+              {{errors.identificacion}}
+            </div>
+          </div>
           <div class="col-md-12 mb-3">
             <label 
             for="validarNombre"
@@ -40,23 +56,7 @@
             </div>
           </div>
           
-          <div class="col-md-12 mb-3">
-            <label 
-            for="validarIdentificacion"
-            class="w-100 text-start"
-            >
-              Identificacion:
-            </label>
-            <input
-            v-model="model.identificacion"
-            type="text"
-            class="form-control"
-            id="validarIdentificacion"
-            />
-            <div class="text-danger w-100 text-start">
-              {{errors.identificacion}}
-            </div>
-          </div>
+          
         
           <div class="col-md-12 mb-3">
             <label 
