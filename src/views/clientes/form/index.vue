@@ -109,7 +109,7 @@
             </label>
             <input
             v-model="model.telefono"
-            type="number"
+            type="tel"
             class="form-control"
             id="validarTelefono"
             name="validarTelefono"

@@ -15,25 +15,19 @@
       <DataTable 
       :value="getClientes"
       >
-        <Column header="nombres" field="nombres"  sortable />
-        <Column 
-        header="identificacion" 
-        field="identificacion"  
-        />
+        <Column header="Nombres" field="nombres"  sortable />
+        <Column header="Apellidos" field="apellidos"  sortable />
+        <Column header="Identificacion" field="identificacion" />
         <Column header="Correo electronico" field="correo"  />
+        <Column header="Telefono" field="correo"  />
         <Column header="Acciones">
-          <template #body>
+          <template #body="{data}">
             <button 
             type="button" 
             class="btn btn-danger m-1"
+            @click="handleDelete(data._id)"
             >
               Eliminar
-            </button>
-            <button 
-            type="button" 
-            class="btn btn-primary m-1"
-            >
-              Editar
             </button>
           </template>
         </Column>
@@ -45,8 +39,11 @@
 <script>
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
-import {computed, ref} from 'vue'
+import {computed, onMounted, ref} from 'vue'
 import Page from '../../components/Page.vue'
+import {clienteListar,clienteDelete} from './service'
+import Swal from 'sweetalert2'
+
 export default {
   components:{
     DataTable,
@@ -71,10 +68,40 @@ export default {
     const handleMenuToggle = ()=>{
       visibleLeft.value = !visibleLeft.value
     }
+    const handleList = ()=>{
+      clienteListar().then(({data})=>{
+        clientes.value = data
+      }).catch(err=>{
+        console.error(err.message);
+      })
+    }
+    const handleDelete = (id) => {
+      
+      Swal.fire({
+        title: 'Eliminar?',
+        showDenyButton: true,
+        confirmButtonText: 'Si',
+        icon: 'question'
+      }).then(({isConfirmed})=>{
+        if(isConfirmed){
+          clienteDelete(id).then(()=>{
+            handleList()
+            Swal.fire('Mensaje','Cliente Removido','success')
+          }).catch(err=>{
+            console.error(err.message);
+          })
+        }
+      })
+
+    }
+    onMounted(()=>{
+      handleList()
+    })
     return {
       getClientes,
       visibleLeft,
-      handleMenuToggle
+      handleMenuToggle,
+      handleDelete
     }
   }
 
