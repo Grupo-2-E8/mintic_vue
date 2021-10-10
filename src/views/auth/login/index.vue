@@ -80,8 +80,7 @@ export default {
     })
     
 
-    useField('correo',null,{ initialValue: '' })
-    useField('clave',null,{ initialValue: '' })
+    
     
     const {
       handleSubmit,
@@ -90,10 +89,13 @@ export default {
     } = useForm({
       validationSchema,
       initialValues:{
-        correo: 'carlos@sanchezacero.com.co',
-        clave: '1099547330'
+        correo: '',
+        clave: ''
       }
     })
+
+    useField('correo',null,{ initialValue: '' })
+    useField('clave',null,{ initialValue: '' })
     
     const handleLogin = handleSubmit((values)=>{
       loginService(values).then(async({data})=>{
