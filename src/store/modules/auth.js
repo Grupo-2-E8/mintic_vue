@@ -1,9 +1,11 @@
 import Cookies from 'js-cookie'
 import axios from '../../libs/axios'
-const state = {
+
+const state = () => ({
   user: null,
   token: Cookies.get('token')
-}
+})
+
 const getters = {
   user: state => state.user,
   token: state => state.token,
@@ -20,30 +22,38 @@ const mutations = {
     state.token = null
     Cookies.remove('token')
   },
+  FETCH_USER_SUCCESS(state, { user }) {
+    state.user = user
+  },
+  FETCH_USER_FAILURE(state) {
+    state.token = null
+    Cookies.remove('token')
+  },
 }
 
 const actions = {
   saveToken ({ commit, dispatch }, payload) {
-    commit(types.SAVE_TOKEN, payload)
+    console.log(111,payload);
+    commit(`SAVE_TOKEN`, payload)
   },
-  async fetchUser ({ commit }) {
+  async fetchUser({ commit }) {
     try {
-      const { data } = await axios.get('/me')
-      commit(types.FETCH_USER_SUCCESS, { user: data })
+      const { data } = await axios.get('/auth/me')
+      commit(`FETCH_USER_SUCCESS`, { user: data })
     } catch (e) {
-      commit(types.FETCH_USER_FAILURE)
+      commit(`FETCH_USER_FAILURE`)
     }
   },
   async logout ({ commit }) {
     try {
-      await axios.post('/logout')
+      await axios.post('/auth/logout')
     } catch (e) { }
-    commit(types.LOGOUT)
+    commit(`LOGOUT`)
   },
 }
 
 export default {
-  namespace: 'auth',
+  namespaced: true,
   state,
   getters,
   mutations,

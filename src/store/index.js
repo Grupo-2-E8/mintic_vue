@@ -1,10 +1,10 @@
 import { createStore } from 'vuex'
 import modulesLocal from './modules'
 
-const modules = { ...modulesLocal }
-
 const store = createStore({
-  modules
+  modules:{
+    ...modulesLocal
+  }
 })
 
 export function useStore () {

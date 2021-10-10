@@ -5,12 +5,22 @@
 <script>
 import { ref } from "vue";
 import Menubar from "primevue/menubar";
+import {useStore} from 'vuex'
+import {useRouter} from 'vue-router'
 
 export default {
   components: {
     Menubar,
   },
   setup() {
+    const store = useStore()
+    const router = useRouter()
+
+    const salir = () => {
+      store.dispatch('auth/logout') 
+      router.push({name: 'auth.login'})
+    }
+
     const items = ref([
       {
         label: "Pedidos",
@@ -25,12 +35,14 @@ export default {
       {
         label: "Cerrar sesion",
         icon: "pi pi-fw pi-power-off",
-        to:{ name: 'auth.login'}
+        command: salir
+        //to:{ name: 'auth.login'}
       },
-    ]);
+    ])
+    
     return {
       items,
-    };
+    }
   },
 };
 </script>

@@ -65,9 +65,13 @@ import {useRouter} from 'vue-router'
 import {useLogin} from './useLogin'
 import {string,object} from 'yup'
 import {loginService} from '../service'
+import Swal from 'sweetalert2'
+import {useStore} from 'vuex'
+
 export default {
   name: 'LoginPage',
   setup(){
+    const store = useStore()
     useLogin()
     const router = useRouter()
     const validationSchema = object({
@@ -75,13 +79,9 @@ export default {
       'clave': string().min(6)
     })
     
-    const initialValues = {
-      correo: '',
-      clave: ''
-    }
 
-    useField('correo',null)
-    useField('clave',null)
+    useField('correo',null,{ initialValue: '' })
+    useField('clave',null,{ initialValue: '' })
     
     const {
       handleSubmit,
@@ -89,16 +89,25 @@ export default {
       errors
     } = useForm({
       validationSchema,
-      initialValues
+      initialValues:{
+        correo: 'carlos@sanchezacero.com.co',
+        clave: '1099547330'
+      }
     })
     
     const handleLogin = handleSubmit((values)=>{
-      console.log({values})
-      router.push({name: 'Home'})
-      loginService(values).then(()=>{
-        console.log(result)
+      loginService(values).then(async({data})=>{
+        console.log(data)
+        console.log(store.getters);
+        store.dispatch('auth/saveToken',data)
+        await store.dispatch('auth/fetchUser')
+        router.push({name: 'Home'})
       }).catch(err=>{
         console.error(err.message);
+        if(err.response.status === 400 ){
+          model.clave = ''
+          Swal.fire('Mensaje','Crendenciales no validas','warning')
+        }
       })
     })
 
