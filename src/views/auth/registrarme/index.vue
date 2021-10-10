@@ -57,14 +57,12 @@ import {registerService} from '../service'
 import Swal from 'sweetalert2'
 import {useRouter} from 'vue-router'
 export default {
+  name: 'RegisterPage',
   setup(){
     const router = useRouter()
-    useField('correo',null,{
-      initialValue: ''
-    })
-    useField('clave',null,{
-      initialValue: ''
-    })
+    useField('correo',null,{ initialValue: '' })
+    useField('clave',null,{ initialValue: '' })
+    
     const validationSchema = object({
       correo: string().required().max(255).email(),
       clave: string().required().min(8)
@@ -74,7 +72,11 @@ export default {
       errors,
       handleSubmit
     } = useForm({
-      validationSchema
+      validationSchema,
+      initialValues:{
+        correo: '',
+        clave: ''
+      }
     })
     const handleFormulario = handleSubmit((values)=>{
       console.log({values});
