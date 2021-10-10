@@ -5,12 +5,7 @@ import checkAuth from '../middleware/checkAuth'
 import auth from '../middleware/auth'
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-    beforeEnter: [auth]
-  },
+  
   {
     path: '/about',
     name: 'About',
@@ -20,28 +15,28 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
+    path: '/clientes/form',
+    name: 'clientes.form',
+    component: () =>import('../views/clientes/form').then(m => m.default || m),
+    beforeEnter: [checkAuth,auth]
+  },
+  {
     path: '/clientes',
     name: 'clientes',
     component: ()=>import('../views/clientes'),
-    beforeEnter: [auth]
-  },
-  {
-    path: '/clientes/form',
-    name: 'clientes.form',
-    component: ()=>import('../views/clientes/form'),
-    beforeEnter: [auth]
+    beforeEnter: [checkAuth,auth]
   },
   {
     path: '/pedidos',
     name: 'pedidos',
     component: ()=>import('../views/pedidos'),
-    beforeEnter: [auth]
+    beforeEnter: [checkAuth,auth]
   },
   {
     path: '/pedidos/form/:id?',
     name: 'pedidos.form',
     component: ()=>import('../views/pedidos/form'),
-    beforeEnter: [auth]
+    beforeEnter: [checkAuth,auth]
   },
   {
     path: '/login',
@@ -53,6 +48,12 @@ const routes = [
     path: '/registrarme',
     name: 'auth.registrarme',
     component: () => import('../views/auth/registrarme')
+  },
+  {
+    path: '/',
+    name: 'Home',
+    component: () => import('../views/Home'),
+    beforeEnter: [checkAuth,auth],
   },
 ]
 
