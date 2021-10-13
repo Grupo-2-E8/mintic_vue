@@ -189,7 +189,11 @@ export default {
     })
 
     const validationSchema = object({
-      estado: number().required().default(1),
+      estados: array().required().default([{
+        estado: 'en proceso',
+        justificacion: 'se procede a preparar el pedido para salida al cliente',
+        fecha: new Date
+      }]),
       fecha: date().required().default(new Date()),
       clienteId: string().max(140).required(),
       transportadora: string().max(255),
@@ -208,7 +212,14 @@ export default {
       validationSchema
     })
 
-    useField('estado',null,{initialValue: 1,label: 'estado'})
+    useField('estados',null,{
+      initialValue: [{
+        estado: 'en proceso',
+        justificacion: 'se procede a preparar el pedido para salida al cliente',
+        fecha: new Date
+      }],
+      label: 'estado'
+    })
     useField('fecha',null,{initialValue: new Date,label: 'fecha'})
     useField('clienteId',null,{initialValue: '',label: 'cliente'})
     useField('transportadora',null,{initialValue: ''})
