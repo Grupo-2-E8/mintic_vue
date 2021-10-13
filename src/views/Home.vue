@@ -1,7 +1,7 @@
 <template>
   <Page>
     <div class="Container">
-      <h1>Bienvenido</h1>      
+      <h1><b>Bienvenido</b></h1>      
     </div>
   </Page>
 </template>
@@ -17,3 +17,11 @@ export default {
   }
 }
 </script>
+<style scoped lang="scss">
+.Container{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

@@ -27,6 +27,12 @@ const routes = [
     beforeEnter: [checkAuth,auth]
   },
   {
+    path: '/pedidos/:id',
+    name: 'pedidos.ver',
+    component: () => import('../views/pedidos/ver'),
+    beforeEnter: [checkAuth,auth]
+  },
+  {
     path: '/pedidos',
     name: 'pedidos',
     component: ()=>import('../views/pedidos'),
