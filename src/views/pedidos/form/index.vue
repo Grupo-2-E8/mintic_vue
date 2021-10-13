@@ -2,11 +2,25 @@
   <Page>
     <div class="container">
       <div class="row justify-content-center mt-4">
+        
         <div class="col-12 col-sm-10 col-xl-5">
           <div class="card">
             <div class="card-body">
-              <div class="w-100">
-                <h2>Formulario Pedido</h2>
+              <div class="col-sm-12 text-start mb-4">
+                <button 
+                type="button" 
+                class="btn btn-primary d-flex align-items-center"
+                @click="$router.back()"
+                >
+                  <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+                  </svg>
+                  <span> Volver </span>
+                </button>
+              </div>
+              
+              <div class="w-100 text-start">
+                <h2><b>Formulario Pedido</b></h2>
               </div>
               <form 
               @submit="handleSave"
@@ -122,6 +136,9 @@
                   </DataTable>
                 </div>
               </form>
+              <div class="w-100 mt-3 text-end">
+                <h1><b>Gran total ${{moneyFormat(total)}}</b></h1>
+              </div>
             </div>
           </div>
         </div>
@@ -134,7 +151,7 @@
 import Page from '../../../components/Page.vue'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
-import {onMounted, ref, watch} from 'vue'
+import {computed, onMounted, ref, watch} from 'vue'
 import AutoComplete from 'primevue/autocomplete';
 import {useField,useForm} from 'vee-validate'
 import {clienteListar} from '../../clientes/service'
@@ -158,14 +175,18 @@ export default {
     const clientes = ref([])
     const clienteSel = ref({})
     
-    const handleItemAdd = ()=>{
+    const handleItemAdd = () => {
       model.productos.push({
         id: null,
-        producto: 'zapatos',
+        producto: '',
         cantidad: 0,
         precio: 0
       })
     }
+    
+    const total = computed(()=>{
+      return model.productos.reduce((total,item) => total += (item.cantidad * item.precio) ,0)
+    })
 
     const validationSchema = object({
       estado: number().required().default(1),
@@ -215,6 +236,10 @@ export default {
         model.clienteId = _id
       }
     })
+    const moneyFormat = (value)=>{
+      const instance = Intl.NumberFormat('de-DE')
+      return instance.format(value)
+    }
     onMounted(()=>{
       handleItemAdd()
 
@@ -229,9 +254,11 @@ export default {
       model,
       errors,
       clienteSel,
+      total,
       handleItemAdd,
       handleRowRemove,
-      handleSave
+      handleSave,
+      moneyFormat
     }
   }
 }

@@ -49,7 +49,8 @@
         </div>
         <div class="col-12">
           <DataTable :value="pedido.productos">
-            <Column header="Cantidad" field="cantidad"  sortable />
+            <Column header="Producto" field="producto" sortable />
+            <Column header="Cantidad" field="cantidad" sortable />
             <Column header="Precio" field="precio" sortable />
             <Column header="Total">
               <template #body="{data}">
@@ -62,7 +63,7 @@
           <h1>${{total}}</h1>
         </div>
         <div class="col-sm-12 text-start mb-3">
-          <h1><b>Línea de tiempo</b></h1>
+          <h2><b>Línea de tiempo</b></h2>
         </div>
         <div class="col-12">
           <Timeline :value="events"> 
