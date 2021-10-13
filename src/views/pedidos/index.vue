@@ -14,10 +14,20 @@
     <div class="">
       <DataTable :value="pedidos">
         <Column header="Identificador" field="_id" />
-        <Column header="Nombres" field="clienteId.nombres" />
-        <Column header="Apellidos" field="clienteId.apellidos" sortable />
-        <Column header="Estado" field="estado" />
         <Column header="Fecha" field="fecha" sortable />
+        <Column 
+        header="Estado" 
+        field="estado" 
+        sortable
+        >
+          <template #body="{data}">
+            {{estadoReciente(data.estados).estado}}
+          </template>
+        </Column>
+        <Column header="Nombres" field="clienteId.nombres" sortable />
+        <Column header="Apellidos" field="clienteId.apellidos" sortable />
+        <Column header="Telefono" field="clienteId.telefono" sortable />
+        <Column header="Correo" field="clienteId.telefono" sortable />
         <Column header="Acciones">
           <template #body="{data}">
             <button 
@@ -139,10 +149,9 @@ export default {
     }
     
     const handleView = ({_id:id}) => {
-      router.push({
-        name: 'pedidos.ver',
-        params:{ id }
-      })
+      const pathRoute = router.resolve({ name: 'pedidos.ver', params:{ id } })
+      console.log(pathRoute);
+      window.open(pathRoute.fullPath,'_blank')
     }
 
     const handleEstadoChange = (value) => {
@@ -179,6 +188,10 @@ export default {
       })
     })
 
+    const estadoReciente = (values = []) => {
+      return values.pop()
+    }
+
     onMounted(()=>{
       pedidosFetch()
     })
@@ -190,6 +203,7 @@ export default {
       display,
       pedidos,
       esProcesando,
+      estadoReciente,
       handleView,
       handleEstadoChange,
       handleForm

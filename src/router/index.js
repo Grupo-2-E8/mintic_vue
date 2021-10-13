@@ -30,7 +30,7 @@ const routes = [
     path: '/pedidos/:id',
     name: 'pedidos.ver',
     component: () => import('../views/pedidos/ver'),
-    beforeEnter: [checkAuth,auth]
+    // beforeEnter: [checkAuth,auth]
   },
   {
     path: '/pedidos',

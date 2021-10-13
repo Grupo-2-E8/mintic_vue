@@ -1,8 +1,8 @@
 <template>
-  <Page>
+  <section>
     <div class="container">
       <div class="row my-5">
-        <div class="col-sm-12 text-start mb-4">
+        <!-- <div class="col-sm-12 text-start mb-4">
           <button 
           type="button" 
           class="btn btn-primary d-flex align-items-center"
@@ -13,7 +13,7 @@
             </svg>
             <span> Volver </span>
           </button>
-        </div>
+        </div> -->
 
         <div class="col-12 text-center mb-2">
           <h1 class="text-uppercase"><b>Resumen general del pedido</b></h1>
@@ -42,7 +42,7 @@
             <div class="card">
               <div class="card-header">Estado</div>
               <div class="card-body py-4">
-                <div class="w-100">{{pedido.estado}}</div>
+                <div class="w-100">{{ pedido.estados.length ? pedido.estados[0].estado : 'sin estado'}}</div>
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@
         </div>
       </div>
     </div>
-  </Page>
+  </section>
 </template>
 
 <script>
