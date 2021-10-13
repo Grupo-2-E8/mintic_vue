@@ -54,13 +54,13 @@
             <Column header="Precio" field="precio" sortable />
             <Column header="Total">
               <template #body="{data}">
-                {{data.cantidad * data.precio}}
+                {{moneyFormat(data.cantidad * data.precio)}}
               </template>
             </Column>
           </DataTable>
         </div>
         <div class="col-12 text-end mb-4">
-          <h1>${{total}}</h1>
+          <h1>${{moneyFormat(total)}}</h1>
         </div>
         <div class="col-sm-12 text-start mb-3">
           <h2><b>Línea de tiempo</b></h2>
@@ -118,6 +118,10 @@ export default {
     const setFecha = (value)=>{
       return dayjs(value).format('DD MMM YYYY HH:mm')
     }
+    const moneyFormat = (value)=>{
+      const instance = Intl.NumberFormat('de-DE')
+      return instance.format(value)
+    }
     const pedidoFetch = ()=>{
       const {id} = route.params
       return pedidosBuscar(id).then(({data})=>{
@@ -135,7 +139,8 @@ export default {
       pedido,
       total,
       events,
-      setFecha
+      setFecha,
+      moneyFormat
     }
   }
 

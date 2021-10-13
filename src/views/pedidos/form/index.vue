@@ -226,7 +226,6 @@ export default {
     })
 
     const handleRowRemove = (index) => {
-      console.log(index);
       model.productos.splice(index,1)
     }
 
