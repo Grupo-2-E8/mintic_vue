@@ -14,7 +14,15 @@
     <div class="">
       <DataTable :value="pedidos">
         <Column header="Identificador" field="_id" />
-        <Column header="Fecha" field="fecha" sortable />
+        <Column 
+        header="Fecha" 
+        field="fecha" 
+        sortable 
+        >
+          <template #body="{data}">
+            {{setFecha(data.createdAt)}}
+          </template>
+        </Column>
         <Column 
         header="Estado" 
         field="estado" 
@@ -124,6 +132,7 @@ import Dialog from 'primevue/dialog';
 import {useField,useForm} from 'vee-validate'
 import {object,string} from 'yup'
 import Swal from 'sweetalert2'
+import dayjs from 'dayjs'
 
 export default {
   name: 'PedidosPage',
@@ -191,6 +200,10 @@ export default {
     const estadoReciente = (values = []) => {
       return values.pop()
     }
+    
+    const setFecha = (value)=>{
+      return dayjs(value).format('DD MMM YYYY HH:mm')
+    }
 
     onMounted(()=>{
       pedidosFetch()
@@ -203,6 +216,7 @@ export default {
       display,
       pedidos,
       esProcesando,
+      setFecha,
       estadoReciente,
       handleView,
       handleEstadoChange,
