@@ -66,12 +66,15 @@
           <h2><b>Línea de tiempo</b></h2>
         </div>
         <div class="col-12">
-          <Timeline :value="events"> 
+          <Timeline :value="pedido.estados"> 
             <template #opposite="slotProps">
-              <small class="p-text-secondary">{{slotProps.item.date}}</small>
+              <small class="p-text-secondary">{{setFecha(slotProps.item.fecha)}}</small>
             </template>
             <template #content="slotProps">
-              {{slotProps.item.status}}
+              <div class="d-flex flex-column">
+                <div class="fw-bold text-uppercase">{{slotProps.item.estado}} </div>
+                <div>{{slotProps.item.justificacion}} </div>
+              </div>
             </template>
           </Timeline>
         </div>
@@ -103,15 +106,10 @@ export default {
     const route = useRoute()
     const pedido = ref({
       _id: null,
-      productos: []
+      productos: [],
+      estados: []
     })
-    const events = ref([
-        {status: 'Ordered', date: '15/10/2020 10:30', icon: 'pi pi-shopping-cart', color: '#9C27B0', image: 'game-controller.jpg'},
-        {status: 'Processing', date: '15/10/2020 14:00', icon: 'pi pi-cog', color: '#673AB7'},
-        {status: 'Shipped', date: '15/10/2020 16:15', icon: 'pi pi-shopping-cart', color: '#FF9800'},
-        {status: 'Delivered', date: '16/10/2020 10:00', icon: 'pi pi-check', color: '#607D8B'}
-    ])
-
+    
     const total = computed(()=>{
       return pedido.value.productos.reduce((total,item)=> total += (item.cantidad * item.precio),0)
     })
@@ -138,7 +136,6 @@ export default {
     return {
       pedido,
       total,
-      events,
       setFecha,
       moneyFormat
     }
