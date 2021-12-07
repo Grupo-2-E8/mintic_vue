@@ -18,6 +18,14 @@
         <div class="col-12 text-center mb-2">
           <h1 class="text-uppercase"><b>Resumen general del pedido</b></h1>
         </div>
+        <div class="col-12 text-center mb-2">
+          <img 
+          :src="`https://secret-scrubland-71522.herokuapp.com/api/pedidos/qr/generar/${_id}`" 
+          alt="" 
+          height="200" 
+          width="200" 
+          >
+        </div>
         <div class="col-12 text-start">
           <h2><b>Pedido Num:</b> {{pedido._id}} </h2>
         </div>
