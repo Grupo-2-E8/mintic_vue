@@ -20,7 +20,7 @@
         </div>
         <div class="col-12 text-center mb-2">
           <img 
-          :src="`https://secret-scrubland-71522.herokuapp.com/api/pedidos/qr/generar/${_id}`" 
+          :src="`https://secret-scrubland-71522.herokuapp.com/api/pedidos/qr/generar/${pedido._id}`" 
           alt="" 
           height="200" 
           width="200" 
